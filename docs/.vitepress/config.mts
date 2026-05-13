@@ -107,16 +107,15 @@ export default defineConfig({
                 text: 'Frameworks', 
                 collapsed: true, 
                 items: [
-                  { text: 'React', link: '/stacks/frontend/frameworks/react' },
-                  { text: 'NextJS', link: '/stacks/frontend/nextjs' },
+                  { text: 'NextJS', link: '/stacks/frontend/frameworks/nextjs' },
                 ]
               },
               {
                 text: 'Styling',
                 collapsed: true,
                 items: [
-                  { text: 'MaterialUI', link: '/stacks/frontend/materialui' },
-                  { text: 'TailwindCSS', link: '/stacks/frontend/tailwindcss' },
+                  { text: 'MaterialUI', link: '/stacks/frontend/styling/materialui' },
+                  { text: 'TailwindCSS', link: '/stacks/frontend/styling/tailwindcss' },
                 ]
               },
               
