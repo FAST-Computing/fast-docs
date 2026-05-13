@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "FAST-Docs",
   description: "FAST Computing - documentation & standards",
-  base: '/',
+  base: '/fast-docs/',
   themeConfig: {
     logo: '/fast_logo_orange.png',
     // https://vitepress.dev/reference/default-theme-config
