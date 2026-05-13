@@ -1,0 +1,60 @@
+/* --- Light Mode Logic --- */
+:root {
+  --vp-c-bg: #ffffff;
+  --vp-c-brand-1: #b84700;
+  --vp-c-brand-2: #c84f00;
+  --vp-c-brand-3: #d35400; /* Buttons/Links in body */
+  --vp-button-brand-bg: var(--vp-c-brand-3);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+  
+  /* Force Navbar Variables */
+  --nav-color: #0f0f0f;
+  --nav-hover: #d35400;
+}
+
+/* --- Dark Mode Logic --- */
+.dark {
+  --vp-c-bg: #0f0f0f;
+  --vp-c-brand-1: #c86108;
+  --vp-c-brand-2: #d86f12;
+  --vp-c-brand-3: #e67e22;
+  --vp-button-brand-bg: var(--vp-c-brand-3);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+  
+  /* Force Navbar Variables */
+  --nav-color: #ffffff;
+  --nav-hover: #ffb380;
+}
+
+/* --- Override VitePress Internal Navbar Vars --- */
+.VPNavBar {
+  /* This kills the orange default for text, icons, and buttons */
+  --vp-c-brand: var(--nav-color) !important;
+  --vp-c-brand-1: var(--nav-color) !important;
+  --vp-c-text-1: var(--nav-color) !important;
+  --vp-c-text-2: var(--nav-color) !important;
+}
+
+/* --- Re-apply Orange strictly on Hover --- */
+.VPNavBar a:hover,
+.VPNavBar button:hover,
+.VPNavBar .VPLink:hover,
+.VPNavBar .VPNavBarMenuLink:hover {
+  color: var(--nav-hover) !important;
+  --vp-c-brand: var(--nav-hover) !important;
+  --vp-c-brand-1: var(--nav-hover) !important;
+}
+
+/* Fix for the Search Button border/text */
+.VPNavBar .DocSearch-Button {
+  --docsearch-muted-color: var(--nav-color) !important;
+  --docsearch-search-icon-color: var(--nav-color) !important;
+  border-color: var(--nav-color) !important;
+}
+
+/* Keep the Home Page "Brand" button white text */
+.VPButton.brand {
+  color: #ffffff !important;
+}
