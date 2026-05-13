@@ -18,11 +18,12 @@ uv is designed to be a drop-in replacement for almost every major tool in the Py
 
 ## Installation
 
-### Linux 
+::: code-group
 
-```bash
+```sh [Linux]
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
+:::
 
 ## Essential Commands
 

@@ -14,28 +14,26 @@ Micromamba is a statically linked C++ executable that provides the full power of
 
 ## Installation
 
-### Arch Linux
+::: code-group
 
-**1. Download from AUR using `yay`**
-
-```bash
+```sh [Arch Linux]
 yay micromamba-bin
 ```
+:::
 
-**2. Initialization**
+## Initialize and Verify
 
-```bash
+```sh
 micromamba shell init -s bash
 ```
 
 ::: info
-If step 2 fails, run this before running the same step again:
+If the command above fails, run this before repeating the same step again:
 `export MAMBA_ROOT_PREFIX=~/micromamba`
 :::
 
-**3. Verify**
 
-```bash
+```sh
 source ~/.bashrc
 micromamba --version
 ```
@@ -70,7 +68,7 @@ ___
 
 ::: tip
 Micromamba also allows you to run a command inside an environment without activating it first:
-```bash
+```sh
 micromamba run -n <env_name> python <script_name>.py
 ```
 :::
