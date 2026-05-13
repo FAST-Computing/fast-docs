@@ -1,10 +1,28 @@
 import { defineConfig } from 'vitepress'
+import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "FAST-Docs",
   description: "FAST Computing - documentation & standards",
   base: '/fast-docs/',
+
+  markdown: {
+    config(md) {
+      md.use(groupIconMdPlugin)
+    },
+  },
+  vite: {
+    plugins: [
+        groupIconVitePlugin({
+          customIcon: {
+            '.py': 'vscode-icons:file-type-python',
+            'python': 'vscode-icons:file-type-python',
+          },
+        })
+      ],
+  },
+
   themeConfig: {
     logo: '/fast_logo_orange.png',
     // https://vitepress.dev/reference/default-theme-config
@@ -14,6 +32,7 @@ export default defineConfig({
     search: {
       provider: 'local'
     },
+
     sidebar: [
       {
         text: 'Setup',
