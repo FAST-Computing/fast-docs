@@ -8,10 +8,10 @@ The default, most common and recommended IDE to work with us.
 
 ## Installation
 
-### Arch Linux
+::: code-group
 
-On Arch, we will need to use `yay` to download Visual Studio Code:
-
-```bash
+```sh [Arch Linux]
 yay visual-studio-code-bin 
 ```
+
+:::

@@ -8,11 +8,13 @@ Git is the engine under the hood, and GitHub is the shiny showroom where everyon
 
 ## Installation
 
-### Arch Linux 
+::: code-group
 
-```bash
+```sh [Arch Linux]
 pacman -S git
 ```
+
+:::
 
 ## SSH Key
 
@@ -79,7 +81,11 @@ In VSCode, you can monitor the branch you're working in by looking at the bottom
 To share your code, you need to link your local folder to the remote repository on GitHub.
 
 - `git push -u origin main`: Send your local commits to GitHub. The `-u` flag remembers your preferences for next time.
-- `git pull`: Grab the latest changes from GitHub and merge them into your local files. Use this often to stay up to date with workmates. Alternatively, you can use `git fetch` and then `git merge` to have a safe peek at the changes before merging in.
+- `git pull`: Grab the latest changes from GitHub and merge them into your local files. Use this often to stay up to date with workmates. 
+
+::: danger
+Instead of doing `git pull` directly, it is wisely recommended, instead, to `git fetch <branch_name>` first - to download new commits without touching working files - and then `git rebase <branch_name>` to move your local, unpushed commits to sit "on top" of the fetched commits from the server.
+:::
 
 ## Pull Requests
 
