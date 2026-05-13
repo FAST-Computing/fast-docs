@@ -27,9 +27,9 @@ This site provides a comprehensive overview of the tech stack, tools, and applic
 
 - **Stacks**
   - *Frontend*: Frameworks and libraries for building modern web frontends.
-    - [Next.js](stacks/frontend/nextjs)
-    - [Material UI](stacks/frontend/materialui)
-    - [TailwindCSS](stacks/frontend/tailwindcss) 
+    - [Next.js](stacks/frontend/frameworks/nextjs)
+    - [Material UI](stacks/frontend/styling/materialui)
+    - [TailwindCSS](stacks/frontend/styling/tailwindcss) 
   - *Python*: Key Python libraries for any task.
     - [FastAPI](stacks/python/fastapi)
     - [Pydantic](stacks/python/pydantic)
