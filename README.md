@@ -19,11 +19,8 @@ cd fast-docs
 npm ci
 ```
 
-3. Build and preview locally
+3. See local live changes
 
 ```bash
-npm run docs:build
-```
-```bash
-npm run docs:preview
+npm run docs:dev
 ```
