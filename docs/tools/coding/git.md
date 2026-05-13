@@ -83,7 +83,7 @@ To share your code, you need to link your local folder to the remote repository 
 - `git push -u origin main`: Send your local commits to GitHub. The `-u` flag remembers your preferences for next time.
 - `git pull`: Grab the latest changes from GitHub and merge them into your local files. Use this often to stay up to date with workmates. 
 
-::: danger
+::: warning
 Instead of doing `git pull` directly, it is wisely recommended, instead, to `git fetch <branch_name>` first - to download new commits without touching working files - and then `git rebase <branch_name>` to move your local, unpushed commits to sit "on top" of the fetched commits from the server.
 :::
 

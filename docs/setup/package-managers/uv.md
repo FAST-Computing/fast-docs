@@ -7,7 +7,7 @@ outline: deep
 uv is designed to be a drop-in replacement for almost every major tool in the Python development lifecycle.
 
 - Manages and installs multiple Python versions automatically.
-- Provides full project management with a universal lockfile (uv.lock) for reproducible builds.
+- Provides full project management with a universal lockfile (`uv.lock`) for reproducible builds.
 - It can run and install Python-based CLI tools in isolated environments.
 - Creates and manages virtual environments at lightning speed.
 - Handles package uploads and distribution.
