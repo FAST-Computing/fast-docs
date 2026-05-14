@@ -2,21 +2,34 @@
 outline: deep
 ---
 
-# Wireguard
-WireGuard® is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster, simpler, leaner, and more useful than IPsec, while avoiding the massive headache. I
-You neeed to use Wireguard when you have to connect to your working machine from home (e.g. smart working).
+# WireGuard
+
+Use WireGuard when you need to connect securely to your FAST working machine from outside the office (for example, while working from home).
 
 ## Installation
-Download Wireguard on your computer from the official website: https://www.wireguard.com/install/
 
-::: danger
-Important disclaimer: your currently laptop and your working machine cannot be connected to Cisco (SISSA VPN). You can usa one VPN at a time. 
+Install WireGuard from the official website:
+
+https://www.wireguard.com/install/
+
+::: important
+Your laptop and your working machine cannot be connected to Cisco (SISSA VPN) at the same time. Use only one VPN connection at a time.
 :::
 
-::: danger
-Import disclaimer 2: you need to ask for your personal wg.conf in the slack channel fast_vpn.
+::: important
+Request your personal `wg.conf` file in the `fast_vpn` Slack channel.
 :::
 
-## Use
-Upload the wg.conf file in the app and active the connection. 
-If you have problem connecting please write to fast_vpn slack channel. 
+## Connect With WireGuard
+
+1. Open the WireGuard app.
+2. Import your `wg.conf` file.
+3. Activate the tunnel.
+
+When the tunnel is active, you can connect to your remote machine as usual (for example via SSH or VS Code Remote - SSH).
+
+## Troubleshooting
+
+- If the tunnel does not start, verify that you imported the correct `wg.conf` file.
+- If connection is unstable, disconnect other VPN clients and reconnect.
+- If access still fails, ask for support in the `fast_vpn` Slack channel.
