@@ -6,6 +6,7 @@ export default defineConfig({
   title: "FAST-Docs",
   description: "FAST Computing - documentation & standards",
   base: '/fast-docs/',
+  lastUpdated: true,
 
   markdown: {
     config(md) {
@@ -30,7 +31,11 @@ export default defineConfig({
       { text: 'Home', link: '/' },
     ],
     search: {
-      provider: 'local'
+      provider: 'local',
+    },
+    editLink: {
+      pattern: 'https://github.com/FAST-Computing/fast-docs/edit/main/docs/:path',
+      text: 'Edit this page on GitHub'
     },
 
     sidebar: [
@@ -141,7 +146,13 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/FAST-Computing' },
-      { icon: 'website', link: 'https://fastcomputing.net' }
+      {
+        icon: {
+          svg: '<svg role="img" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><title>Website</title><path d="M5 4.5 12.5 12 5 19.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><path d="M11.5 4.5 19 12l-7.5 7.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg>'
+        },
+        link: 'https://fastcomputing.net',
+        ariaLabel: 'Website'
+      }
     ]
   }
 })
