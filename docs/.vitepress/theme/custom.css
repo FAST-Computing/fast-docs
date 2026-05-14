@@ -16,7 +16,7 @@
 /* --- Dark Mode Logic --- */
 .dark {
   --vp-c-bg: #0f0f0f;
-  --vp-c-brand-1: #c86108;
+  --vp-c-brand-1: #cf6b13;
   --vp-c-brand-2: #d86f12;
   --vp-c-brand-3: #e67e22;
   --vp-button-brand-bg: var(--vp-c-brand-3);
@@ -25,7 +25,7 @@
   
   /* Force Navbar Variables */
   --nav-color: #ffffff;
-  --nav-hover: #ffb380;
+  --nav-hover: #ff9651;
 }
 
 /* --- Override VitePress Internal Navbar Vars --- */
