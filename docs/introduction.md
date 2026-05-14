@@ -31,8 +31,9 @@ This site provides a comprehensive overview of the tech stack, tools, and applic
     - [Material UI](stacks/frontend/styling/materialui)
     - [TailwindCSS](stacks/frontend/styling/tailwindcss) 
   - *Python*: Key Python libraries for any task.
-    - [FastAPI](stacks/python/fastapi)
-    - [Pydantic](stacks/python/pydantic)
+    - [FastAPI](stacks/backend/python/fastapi)
+    - [Pydantic](stacks/backend/python/pydantic)
+    - [Numpy](stacks/backend/python/numpy)
 
 - **Services**
   - *VPN*: Secure remote access to company resources.
