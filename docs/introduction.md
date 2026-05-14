@@ -4,7 +4,12 @@ Welcome to the official documentation for **FAST Computing**!
 
 This site provides a comprehensive overview of the tech stack, tools, and applications used within the company. Use this guide to get started, set up your environment, and find best practices for daily work.
 
+
 ## Index
+
+::: info
+The index is going to have issues from time to time giving frequent changes to the docs (especially since it can break production), so it will not get updated as much. It will probably be removed anytime soon given its redundancy, eventually.
+:::
 
 - **Setup**
   - *Operating Systems*: Learn how to install and maintain your OS, including essential tools for package management.

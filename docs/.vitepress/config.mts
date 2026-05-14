@@ -112,7 +112,11 @@ export default defineConfig({
               { text: 'Databases',
                 collapsed: true,
                 items: [
-                  { text: 'PostgreSQL', link: '/stacks/backend/databases/postgresql' },
+                  { text: 'Fundamentals', link: '/stacks/backend/databases/fundamentals' },
+                  { text: 'PostgreSQL', link: '/stacks/backend/databases/postgres' },
+                  { text: 'PostgREST', link: '/stacks/backend/databases/postgrest' },
+                  { text: 'DBMate', link: '/stacks/backend/databases/dbmate' },
+                  { text: 'New Database', link: '/stacks/backend/databases/new_database' },
                 ]
               },
             ]
