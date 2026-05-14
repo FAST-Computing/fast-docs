@@ -109,6 +109,12 @@ export default defineConfig({
                   { text: 'Numpy', link: '/stacks/backend/python/numpy' },
                 ]
               },
+              { text: 'Databases',
+                collapsed: true,
+                items: [
+                  { text: 'PostgreSQL', link: '/stacks/backend/databases/postgresql' },
+                ]
+              },
             ]
           },
           {
