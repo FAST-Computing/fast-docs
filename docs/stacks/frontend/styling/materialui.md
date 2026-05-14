@@ -56,8 +56,6 @@ One of MUI's strongest features is the ability to change the look of the entire 
 ---
 
 
-
-
 ## Usage
 
 For more information about deeper usage and components, see: https://mui.com/material-ui/getting-started/usage/
