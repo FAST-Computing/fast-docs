@@ -28,6 +28,8 @@ export default defineConfig({
     logo: '/fast_logo_orange.png',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
+      { text: 'ATLAS', link: 'https://atlas.sissa.it/' },
+      { text: 'ARGOS', link: 'https://argos.sissa.it/' },
       { text: 'Home', link: '/' },
     ],
     search: {
@@ -96,12 +98,17 @@ export default defineConfig({
         collapsed: false,
         items: [
           {
-            text: 'Python',
+            text: 'Backend',
             collapsed: true,
             items: [
-              { text: 'Pydantic', link: '/stacks/python/pydantic' },
-              { text: 'FastAPI', link: '/stacks/python/fastapi' },
-              { text: 'Numpy', link: '/stacks/python/numpy' },
+              { text: 'Python',
+                collapsed: true,
+                items: [
+                  { text: 'Pydantic', link: '/stacks/backend/python/pydantic' },
+                  { text: 'FastAPI', link: '/stacks/backend/python/fastapi' },
+                  { text: 'Numpy', link: '/stacks/backend/python/numpy' },
+                ]
+              },
             ]
           },
           {

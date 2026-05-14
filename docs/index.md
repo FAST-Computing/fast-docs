@@ -6,15 +6,12 @@ hero:
   text: "Documentation & Standards"
   tagline: "High-performance technical documentation built for speed and clarity."
   image:
-    src: /logohd.png
+    src: /logonew.png
     alt: FAST Logo
   actions:
     - theme: brand
       text: Get Started
       link: /introduction
-    - theme: alt
-      text: API Reference
-      link: /api-examples
 
 features:
   - title: Lightning Fast
