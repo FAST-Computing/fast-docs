@@ -4,15 +4,11 @@ outline: deep
 
 # SISSA VPN
 
-Use SISSA VPN to access internal resources (for example FAST remote machines) when you are outside the SISSA network.
+Use SISSA VPN to access internal resources (High-Performance Computing) when you are outside the SISSA network.
 
-::: important
-You need an active SISSA account and 2FA enabled.
-:::
+> [!IMPORTANT] 
+You need an active SISSA account and 2FA enabled. You cannot be connected to another VPN at the same time.
 
-::: important
-You cannot be connected to another VPN at the same time.
-:::
 
 ## Installation
 
@@ -31,16 +27,9 @@ If you are unsure which installer to use for your OS, check with ITCS before pro
 
 When the connection is active, you can access internal hosts via SSH.
 
-## FAST Machine Management
+## Connect to HPC
 
-At the moment, the two available machines are:
-
-1. Penelope
-2. Telemaco
-
-## Connect To FAST Machines
-
-You can connect either from a terminal or from VS Code.
+Currently, there are two available HPCs, **Penelope** and **Telemaco**. You can connect either from a terminal or from VS Code.
 
 ### Option 1: Terminal (SSH)
 
@@ -85,54 +74,56 @@ Use `/home/$(whoami)/storage` as your main working directory on remote machines.
 
 ## Environment Management
 
-The machines run Rocky Linux. To check OS details:
+The HPC machines run Rocky Linux. If you need to confirm the system version, run:
 
 ```sh
 cat /etc/os-release
 ```
 
-For Python projects, create isolated environments with `micromamba` or `uv`.
+For Python projects, use isolated environments. Prefer `micromamba` or `uv`.
 
+::: warning
 You do not have root permissions on these machines.
+:::
 
-To check whether a system package already exists:
+Before installing anything manually, check whether the package is already available through `spack`:
 
 ```sh
 spack find package_name
 ```
 
-To load an available package:
+If it is available, load it with:
 
 ```sh
 spack load package_name
 ```
 
-If a package is missing, ask in the `fast_servers` channel.
+If the package you need is not available, ask in the `fast_servers` channel.
 
 
 ## Transfer Files
 
-Use `rsync` to transfer files between local and remote machines.
+Use `rsync` to move files between your local machine and the HPC systems. It is usually the safest choice because it is resumable and efficient.
 
-Upload from local to remote (run on your local machine):
+Upload from local to remote. Run this on your local machine:
 
 ```sh
 rsync -avz --progress --update /path/to/local/storage/ user@remote.host:/path/to/save/
 ```
 
-Download from remote to local (run on your local machine):
+Download from remote to local. Run this on your local machine:
 
 ```sh
 rsync -avz --progress --update user@remote.host:/path/to/copy/ /path/to/local/storage/
 ```
 
-Full documentation:
+Replace the example paths with your own local and remote directories.
 
-https://download.samba.org/pub/rsync/rsync.1
+Full `rsync` documentation: https://download.samba.org/pub/rsync/rsync.1
 
 ## Troubleshooting
 
 - If VPN login fails, verify your SISSA password and 2FA status.
 - If SSH fails, confirm VPN is connected and host name is correct.
-- If you need access support, contact ITCS (VPN issues) or write in `fast_servers` (machine access and packages).
+- If you need access support, contact ITCS (VPN issues) or ask for help in the `fast_servers` Slack channel (machine access and packages).
 
