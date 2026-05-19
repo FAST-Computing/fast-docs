@@ -8,17 +8,11 @@ Use WireGuard when you need to connect securely to your FAST working machine fro
 
 ## Installation
 
-Install WireGuard from the official website:
+Install WireGuard from the official website: https://www.wireguard.com/install/
 
-https://www.wireguard.com/install/
+> [!IMPORTANT]
+Your laptop and your working machine cannot be connected to Cisco (SISSA VPN) at the same time. Use only one VPN connection at a time. Additionally, you need to request your personal `wg.conf` file in the `fast_vpn` Slack channel.
 
-::: important
-Your laptop and your working machine cannot be connected to Cisco (SISSA VPN) at the same time. Use only one VPN connection at a time.
-:::
-
-::: important
-Request your personal `wg.conf` file in the `fast_vpn` Slack channel.
-:::
 
 ## Connect With WireGuard
 
