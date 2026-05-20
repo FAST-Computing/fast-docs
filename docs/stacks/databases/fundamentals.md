@@ -6,7 +6,7 @@ outline: deep
 
 ### What is a Database?
 
-A **database** is an organized collection of structured information stored electronically.
+A **database** is an organized collection of structured information.
 Unlike simple files or spreadsheets, a database is designed to efficiently store, retrieve, update, and protect data even when applications grow large.
 
 ---
@@ -19,16 +19,19 @@ It acts as the intermediary between your application and the stored data.
 
 Instead of manually editing files, your application asks the DBMS to:
 
-- store new data
-- retrieve existing data
-- update records
-- delete information
+- execute CRUD operations
 - enforce access permissions
 - maintain consistency
 - handle concurrent users safely
 - recover from failures
 
+::: info
+CRUD is an acronym for Create [**INSERT**], Read [**SELECT**], Update [**UPDATE**] and Delete [**DELETE**]. Those are the 4 basics operations in data management.
+:::
+
+::: info
 PostgresSQL is just a DBMS, but there are many others like MySQL, SQLite, SQL Server, Oracle.
+:::
 
 ---
 
@@ -100,41 +103,50 @@ The `user_id` links the order to the user.
 
 This creates structured relationships between entities.
 
----
+## Core Concepts
 
-### Core Concepts
+### Table
 
-**Table**  
 A collection of structured records.
 
-Like a spreadsheet sheet.
+Example:
+
+**users**
+
+| id | name | surname |
+|----|------|------|
+| 1  | Alice | Bianchi |
+| 2  | Marco | Neri |
+| 3  | Giulio | Verdi |
 
 ---
 
-**Row (Record)**  
+### Row (Record)
+
 One individual entry.
 
 Example:
 
 ```text
-1 | Alice | alice@company.com
+1 | Alice | Bianchi
 ```
 
 ---
 
-**Column (Field)**  
+### Column (Field)
+
 A specific type of information.
 
 Examples:
 
 - id
-- email
-- created_at
-- salary
+- name
+- surname
 
 ---
 
-**Primary Key**  
+### Primary Key (PK)
+
 A unique identifier for each row.
 
 Example:
@@ -145,7 +157,8 @@ id UUID PRIMARY KEY
 
 ---
 
-**Foreign Key**  
+### Foreign Key (FK)
+
 A reference to data in another table.
 
 Example:
@@ -155,5 +168,3 @@ user_id REFERENCES users(id)
 ```
 
 This enforces valid relationships.
-
----
