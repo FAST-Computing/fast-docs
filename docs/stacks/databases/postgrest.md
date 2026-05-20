@@ -15,8 +15,6 @@ Instead of manually building backend CRUD endpoints like:
 PostgREST generates them directly from your database schema.
 PostgREST works by inspecting your PostgreSQL schema and exposing tables, views, and stored procedures as HTTP endpoints.
 
----
-
 ## Why Use PostgREST?
 
 Without PostgREST, building a backend usually means:
@@ -37,8 +35,6 @@ With PostgREST:
 - no custom CRUD boilerplate required
 
 It dramatically reduces backend complexity.
-
----
 
 ## Docker Setup
 
@@ -74,8 +70,6 @@ services:
     depends_on:
       - db
 ```
-
----
 
 ## Environment Variables Explained
 
@@ -195,8 +189,6 @@ Example:
 PGRST_JWT_SECRET: very_long_secure_secret
 ```
 
----
-
 ## Available APIs
 
 Suppose you have this table:
@@ -209,9 +201,7 @@ CREATE TABLE users (
 );
 ```
 
-PostgREST automatically exposes:
-
----
+**PostgREST automatically exposes:** -->
 
 ### Get All Records
 
@@ -225,8 +215,6 @@ Example:
 curl http://localhost:5000/users
 ```
 
----
-
 ### Get One Record
 
 ```http
@@ -238,8 +226,6 @@ Example:
 ```bash
 curl "http://localhost:5000/users?id=eq.123"
 ```
-
----
 
 ### Insert
 
@@ -259,8 +245,6 @@ curl http://localhost:5000/users \
   }'
 ```
 
----
-
 ### Update
 
 ```http
@@ -278,8 +262,6 @@ curl http://localhost:5000/users?id=eq.123 \
   }'
 ```
 
----
-
 ### Delete
 
 ```http
@@ -292,8 +274,6 @@ Example:
 curl http://localhost:5000/users?id=eq.123 \
   -X DELETE
 ```
-
----
 
 ## Filtering
 
@@ -335,8 +315,6 @@ LIKE:
 /users?name=like.*Ali*
 ```
 
----
-
 ## Sorting
 
 Ascending:
@@ -350,8 +328,6 @@ Descending:
 ```http
 /users?order=created_at.desc
 ```
-
----
 
 ## Pagination
 
@@ -373,8 +349,6 @@ Combined:
 /users?limit=20&offset=40
 ```
 
----
-
 ## Selecting Specific Columns
 
 Instead of returning all columns:
@@ -388,8 +362,6 @@ Select specific fields:
 ```http
 /users?select=id,name
 ```
-
----
 
 ## Relationships / Joins
 
@@ -406,8 +378,6 @@ You can fetch related data:
 ```
 
 This behaves similarly to SQL joins.
-
----
 
 ## Stored Procedures (RPC)
 
@@ -439,8 +409,6 @@ Example:
 curl http://localhost:5000/rpc/me -X POST
 ```
 
----
-
 ## Authentication Example
 
 Authenticated request:
@@ -452,8 +420,6 @@ curl http://localhost:5000/users \
 
 PostgREST validates the token and applies PostgreSQL permissions.
 
----
-
 ## Best Practices
 
 - never expose PostgreSQL superusers
@@ -464,17 +430,3 @@ PostgREST validates the token and applies PostgreSQL permissions.
 - use views for safe public APIs
 - move complex business logic into SQL functions
 - rely on PostgreSQL permissions instead of app-side hacks
-
----
-
-## Architecture Example
-
-```text
-Frontend App
-     ↓
-PostgREST API
-     ↓
-PostgreSQL
-```
-
-No traditional backend required for many use cases.

@@ -14,8 +14,6 @@ A database should not only store data, but store it in a way that is:
 
 A good database structure makes the application simpler.
 
----
-
 ## Creating a Database
 
 ```sql
@@ -27,8 +25,6 @@ Then connect to it:
 ```sh
 psql -U postgres -d company_app
 ```
-
----
 
 ## Creating Your First Table
 
@@ -64,8 +60,6 @@ Common choices are:
 UUIDs are often preferred in distributed or enterprise systems because they avoid collisions across systems and are harder to guess externally.
 :::
 
----
-
 ## Choosing Columns
 
 Add a column when the information belongs directly to that entity.
@@ -92,8 +86,6 @@ CREATE TABLE users (
 ```
 
 Orders do not belong directly inside the users table. They should have their own table!
-
----
 
 ## When to Create a New Table
 
@@ -124,8 +116,6 @@ CREATE TABLE orders (
 ```
 
 This avoids duplicated location data and makes future changes easier.
-
----
 
 ## Relationships Between Tables
 
@@ -175,8 +165,6 @@ CREATE TABLE user_roles (
 This is more flexible than storing a single `role` column in `users`.
 
 Even if today each user has only one role, a many-to-many structure makes future refactors easier.
-
----
 
 ## When to Use an Enum
 
@@ -233,8 +221,6 @@ Use a table when you may later need:
 When building a new database structure, always think to future improvements and refactors.
 :::
 
----
-
 ## Common Constraints
 
 Constraints protect your data.
@@ -271,8 +257,6 @@ Use when PostgreSQL should automatically provide a value:
 created_at TIMESTAMPTZ DEFAULT NOW()
 ```
 
----
-
 ## Soft Delete vs Hard Delete
 
 Hard delete:
@@ -292,8 +276,6 @@ WHERE id = '...';
 ```
 
 Soft delete is often better for business applications because historical data remains available.
-
----
 
 ## Database Example
 
@@ -334,8 +316,6 @@ CREATE TABLE orders (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 ```
-
----
 
 ## Best Practices
 

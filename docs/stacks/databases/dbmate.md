@@ -4,11 +4,9 @@ outline: deep
 
 # <img src="/logos/dbmatelogo.png" style="display: inline-block; vertical-align: middle; height: 48px; margin-right: 8px;"> dbmate
 
-dbmate is a lightweight database migration tool designed to manage schema changes in a safe, repeatable, version-controlled way.
+dbmate is a lightweight database migration tool designed to manage schema changes in a safe, repeatable, **version-controlled way**.
 
 Instead of manually editing production databases, dbmate allows you to define schema changes as migration files that can be applied or reverted consistently across all environments.
-
----
 
 ## Why Use dbmate?
 
@@ -30,8 +28,6 @@ But:
 dbmate solves this by treating schema changes like source code.
 
 Each migration is a versioned SQL file.
-
----
 
 ## Installation
 
@@ -63,7 +59,9 @@ docker run --rm ghcr.io/amacneil/dbmate:latest --version
 
 :::
 
+:::info
 If installed via npm, dbmate can be used directly from your terminal.
+:::
 
 ## Docker Setup
 
@@ -127,8 +125,6 @@ Because dbmate is not a long-running application service.
 Docker is often preferred in team environments because it avoids requiring local CLI installation and guarantees consistent tooling versions.
 :::
 
----
-
 ## Migration Folder Structure
 
 dbmate creates migrations inside:
@@ -158,21 +154,23 @@ SQL TO APPLY
 SQL TO REVERT
 ```
 
----
-
 ## Creating a New Migration
 
 Generate a migration file:
 
-```sh
+::: code-group
+
+```sh [npm]
 npx dbmate new create_users
 ```
 
-```sh
+```sh [Docker]
 docker run --rm \
   -v $(pwd)/db:/db \
   ghcr.io/amacneil/dbmate:latest new create_users
 ```
+
+:::
 
 Result:
 
@@ -196,29 +194,28 @@ CREATE TABLE users (
 DROP TABLE users;
 ```
 
----
-
 ## Applying Migrations
 
 Run all pending migrations:
 
-```sh
+::: code-group
+
+```sh [npm]
 npx dbmate up
 ```
 
-```sh
+```sh [Docker]
 docker run --rm \
   -v $(pwd)/db:/db \
   --network host \
   -e DATABASE_URL="postgres://app_user:strongpassword@localhost:5432/company_app?sslmode=disable" \
   ghcr.io/amacneil/dbmate:latest up
 ```
-
-Equivalent Docker Compose:
-
-```sh
+```sh [Docker Compose]
 docker compose run --rm dbmate up
 ```
+
+:::
 
 This:
 
@@ -226,25 +223,29 @@ This:
 - applies only missing migrations
 - updates migration tracking table
 
----
-
 ## Rolling Back
 
 Undo the most recent migration:
 
-```sh
+::: code-group
+
+```sh [npm]
 npx dbmate down
 ```
 
-```sh
+```sh [Docker]
+docker run --rm \
+  -v $(pwd)/db:/db \
+  --network host \
+  -e DATABASE_URL="postgres://app_user:strongpassword@localhost:5432/company_app?sslmode=disable" \
+  ghcr.io/amacneil/dbmate:latest down
+```
+
+```sh [Docker Compose]
 docker compose run --rm dbmate down
 ```
 
-Equivalent Docker:
-
-```sh
-docker run --rm ... down
-```
+:::
 
 This executes the SQL under:
 
@@ -253,8 +254,6 @@ This executes the SQL under:
 ```
 
 for the latest migration.
-
----
 
 ## Migration Tracking
 
@@ -277,8 +276,6 @@ Example:
 
 This prevents duplicate execution.
 
----
-
 ## Check Status
 
 Shows pending/applied migrations:
@@ -286,8 +283,6 @@ Shows pending/applied migrations:
 ```sh
 dbmate status
 ```
-
----
 
 ## Dump Current Schema
 
@@ -308,8 +303,6 @@ Docker:
 ```sh
 docker compose run --rm dbmate dump
 ```
-
----
 
 ## Best Practices
 
