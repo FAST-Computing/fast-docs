@@ -6,4 +6,8 @@ outline: deep
 
 https://slack.com/intl/it-it
 
-You can also divide the channels in sections. To create a new section click the engine symbol in the top-left area of the page and then click Create new section
+## New Project Set-Up
+
+When setting up a new project, always start by creating a new Slack channel named **`fast_projectname`**.
+
+Ensure that **all team members involved in the project** are added to the channel from the beginning.

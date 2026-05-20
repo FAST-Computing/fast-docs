@@ -82,6 +82,7 @@ export default defineConfig({
             items: [
               { text: 'Slack', link: '/tools/productivity/slack' },
               { text: 'GoodDay', link: '/tools/productivity/goodday' },
+              { text: 'Iso 9001:2025', link: '/tools/productivity/quality_control' },
             ]
           },
           {
