@@ -70,7 +70,7 @@ Don't "brainlessly" run the following commands, since you need to replace the <>
 #### Create
 ::: code-group
 ```sh [Standard]
-# The basics: environment creation.
+# The basics: environment creation
 micromamba create --name <env_name> python=3.11
 ```
 ```sh [Create and install packages]
@@ -124,11 +124,11 @@ micromamba deactivate
 
 ::: code-group
 ```sh [Standard]
-# Remove the environment. Cleanly.
+# Remove the environment. Cleanly
 micromamba env remove -n <env_name>
 ```
 ```sh [By name]
-# You can target the environment either by its name or its directory path.
+# You can target the environment either by its name or its directory path
 micromamba env remove -p ./env_folder
 ```
 :::
@@ -141,7 +141,7 @@ Alternatively, you can skip the word `env` entirely by utilizing the standard pa
 #### Extra
 ::: code-group
 ```sh [Environment List]
-# For the sake of clarity, better check the existing ones...
+# For the sake of clarity, better check the existing ones
 micromamba env list
 ```
 ```sh [Export to YAML]
@@ -155,29 +155,28 @@ micromamba env export > environment.yml
 
 ::: code-group
 ```sh [Install]
-# Install a package. Or more, just list them.
+# Install a package. Or more, just list them
 # You can optionally specify their version (<package_name=version_number>)
 micromamba install <package_name>
 ```
 ```sh [Remove]
-# Install a package. Or more, just list them.
-# You can optionally specify their version (<package_name=version_number>)
+# Remove a package from the environment
 micromamba remove <package_name>
 ```
 ```sh [Update]
-# Update a package. Better than reinstalling it.
+# Update a package. Better than reinstalling it
 micromamba update <package_name>
 ```
 ```sh [Search]
-# Search for packages and channels.
+# Search for packages and channels
 micromamba search <package_name>
 ```
 ```sh [List]
-# Gives a list of all the packages in the environment.
+# Gives a list of all the packages in the environment
 micromamba list
 ```
 ```sh [Cache]
-# Installing packages builds up cache. Give it a flush, sometimes.
+# Installing packages builds up cache. Give it a flush, sometimes
 micromamba clean --all
 ```
 :::
