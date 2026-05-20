@@ -48,6 +48,11 @@ ssh -T git@github.com
 
 If you see *"Hi [YourUsername]! You've successfully authenticated"*, everything is set and you are ready to go.
 
+## New Project Set-Up
+
+When setting up a new project, always start by creating a new GitHub repository named **`fast-projectname`**.
+
+It must contain the code, script environment, CI/CD and setup READMI.
 
 ## Repository Initialization
 
