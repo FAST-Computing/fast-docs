@@ -98,6 +98,17 @@ export default defineConfig({
         collapsed: false,
         items: [
           {
+            text: 'Databases',
+            collapsed: true,
+            items: [
+                { text: 'Fundamentals', link: '/stacks/databases/fundamentals' },
+                { text: 'PostgreSQL', link: '/stacks/databases/postgres' },
+                { text: 'PostgREST', link: '/stacks/databases/postgrest' },
+                { text: 'DBMate', link: '/stacks/databases/dbmate' },
+                { text: 'New Database', link: '/stacks/databases/new_database' },
+              ]
+          },
+          {
             text: 'Backend',
             collapsed: true,
             items: [
@@ -107,16 +118,6 @@ export default defineConfig({
                   { text: 'Pydantic', link: '/stacks/backend/python/pydantic' },
                   { text: 'FastAPI', link: '/stacks/backend/python/fastapi' },
                   { text: 'Numpy', link: '/stacks/backend/python/numpy' },
-                ]
-              },
-              { text: 'Databases',
-                collapsed: true,
-                items: [
-                  { text: 'Fundamentals', link: '/stacks/backend/databases/fundamentals' },
-                  { text: 'PostgreSQL', link: '/stacks/backend/databases/postgres' },
-                  { text: 'PostgREST', link: '/stacks/backend/databases/postgrest' },
-                  { text: 'DBMate', link: '/stacks/backend/databases/dbmate' },
-                  { text: 'New Database', link: '/stacks/backend/databases/new_database' },
                 ]
               },
             ]
