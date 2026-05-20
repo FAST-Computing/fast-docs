@@ -58,3 +58,16 @@
 .VPButton.brand {
   color: #ffffff !important;
 }
+
+.reading-time {
+  max-width: 688px;
+  margin: 0 0 20px 0;
+  padding: 0 0;
+  font-family: var(--vp-font-family-base);
+  font-size: 14px;
+  line-height: 24px;
+  font-style: italic;
+  font-weight: 400;
+  text-align: right;
+  color: var(--vp-c-text-2);
+}
