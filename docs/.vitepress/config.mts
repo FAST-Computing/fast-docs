@@ -28,8 +28,14 @@ export default defineConfig({
     logo: '/fast_logo_orange.png',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'ATLAS', link: 'https://atlas.sissa.it/' },
-      { text: 'ARGOS', link: 'https://argos.sissa.it/' },
+      { text: 'Utilities', items: [
+        { text: 'Google Drive', link: 'https://drive.google.com/drive/u/1/shared-drives' },
+        { text: 'Google Calendar', link: 'https://calendar.google.com/calendar/u/1/r' },
+      ] },
+      { text: 'Hubs', items: [
+        { text: 'ATLAS', link: 'https://atlas.sissa.it/' },
+        { text: 'ARGOS', link: 'https://argos.sissa.it/' },
+      ] },
       { text: 'Home', link: '/' },
     ],
     search: {
@@ -82,6 +88,7 @@ export default defineConfig({
             items: [
               { text: 'Slack', link: '/tools/productivity/slack' },
               { text: 'GoodDay', link: '/tools/productivity/goodday' },
+              { text: 'Canva', link: '/tools/productivity/canva' },
               { text: 'Iso 9001:2025', link: '/tools/productivity/quality_control' },
             ]
           },

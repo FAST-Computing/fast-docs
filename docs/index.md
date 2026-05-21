@@ -14,13 +14,11 @@ hero:
       link: /introduction
 
 features:
-  - title: Lightning Fast
+  - title: ⚡️ Lightning Fast
     details: Built with Vite and Vue 3, ensuring your documentation loads instantly for your users.
-  - title: Multi-language
-    details: Full i18n support allows you to reach a global audience with localized content.
-  - title: Smart Search
+  - title: 🔎 Smart Search
     details: Integrated local search with high-speed indexing for finding answers in seconds.
-  - title: Industry Standards
+  - title: ⚙️ Industry Standards
     details: Optimized for clarity, accessibility, and following modern documentation best practices.
 ---
 
