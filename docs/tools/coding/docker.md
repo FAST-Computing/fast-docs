@@ -12,11 +12,9 @@ A **Container** is a running instance of an image. If the image is the recipe, t
 ## Installation
 
 ::: code-group
-
 ```sh [Arch Linux]
 yay docker-desktop
 ```
-
 :::
 
 ## Essential Commands

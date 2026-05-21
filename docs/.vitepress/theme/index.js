@@ -3,6 +3,23 @@ import { defineComponent, h, nextTick, ref, watch } from 'vue'
 import { useData } from 'vitepress'
 import './custom.css'
 
+function renderReadingTimeIcon() {
+  return h(
+    'svg',
+    {
+      class: 'reading-time__icon',
+      viewBox: '0 0 22 22',
+      fill: 'currentColor',
+      'aria-hidden': 'true',
+    },
+    [
+      h('path', {
+        d: 'M12 1.75A10.25 10.25 0 1 0 22.25 12 10.26 10.26 0 0 0 12 1.75Zm0 18.5A8.25 8.25 0 1 1 20.25 12 8.26 8.26 0 0 1 12 20.25Zm.75-13.5h-1.5V12c0 .24.12.46.32.6l3.75 2.5.83-1.25-3.4-2.27Z',
+      }),
+    ],
+  )
+}
+
 function calculateReadingTime(article) {
   const clone = article.cloneNode(true)
 
@@ -58,7 +75,9 @@ const ReadingTime = defineComponent({
       h(
         'div',
         { class: 'reading-time' },
-        label.value ? `⏱ ${label.value}` : '⏱ calculating...',
+        label.value
+          ? [renderReadingTimeIcon(), h('span', label.value)]
+          : 'Calculating...',
       )
   },
 })
