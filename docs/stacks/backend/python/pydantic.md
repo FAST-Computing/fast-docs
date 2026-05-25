@@ -73,4 +73,56 @@ except ValidationError as e:
     print(e.json()) # Returns a detailed explanation of why it failed
 ```
 
+The current example is 'flat'. In practice, models nest inside each other (for example, a Project has a list of Users). This is the most direct bridge to how you'd use Pydantic with FastAPI request/response bodies:
+
+```python
+class Address(BaseModel):
+    city: str
+    country: str
+
+class Employee(BaseModel):
+    name: str
+    address: Address  # nested model
+```
+
+
+### Model Validator
+
+ A very common real-world need is validating relationships between fields (for example, `end_date` must be after `start_date`). This is one of the most asked-about Pydantic features:
+
+```python
+from pydantic import BaseModel, model_validator
+
+class DateRange(BaseModel):
+    start: int
+    end: int
+
+    @model_validator(mode="after")
+    def check_range(self) -> "DateRange":
+        if self.end <= self.start:
+            raise ValueError("end must be greater than start")
+        return self
+```
+
+
+### Pydantic Settings
+
+This is a separate but closely related package that can become really handy. It reads `.env` files and environment variables into a validated Pydantic model, central to any FastAPI project:
+
+```python
+from pydantic_settings import BaseSettings
+
+class Settings(BaseSettings):
+    database_url: str
+    api_key: str
+    debug: bool = False
+
+    class Config:
+        env_file = ".env"
+
+settings = Settings()
+```
+
+---
+
 See more suitable examples on the official docs: https://pydantic.dev/docs/validation/latest/examples/files/
