@@ -87,6 +87,7 @@ export default defineConfig({
             collapsed: true,
             items: [
               { text: 'Slack', link: '/tools/productivity/slack' },
+              { text: 'Google Account', link: '/tools/productivity/google_account' },
               { text: 'GoodDay', link: '/tools/productivity/goodday' },
               { text: 'Canva', link: '/tools/productivity/canva' },
               { text: 'Iso 9001:2025', link: '/tools/productivity/quality_control' },
