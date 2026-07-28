@@ -6,7 +6,20 @@ outline: deep
 
 Git is the engine under the hood, and GitHub is the shiny showroom where everyone sees your work. Mastering a handful of core commands will handle 90% of your daily workflow.
 
-## Installation
+Think of Git as a three-stage process for saving your work. You move files from your folder to a "staging area" before finally sealing them into the permanent history (the repository). 
+
+In most cases, you would normally like to work on your, personal branch, unless stated otherwise. Branches allow you to work on new features without breaking the "main" (stable) version of the project. You should switch to your branch before committing any file.
+
+- `git checkout -b <branch_name>`: Create and switch to a new branch.
+- `git add <file>`: Move changes to the Staging Area. Use `git add .` to stage everything instead.
+- `git commit -m "Your message"`: Record the staged changes permanently. Remember, keep messages descriptive (e.g., "Fix login button styling").
+
+![Branch check](/branchcheck.png)
+In VSCode, you can monitor the branch you're working in by looking at the bottom left of the screen or you can use `git status`, a very helpful command you can always run to additionally check local files status.
+
+## Setup
+
+### Installation
 
 ::: code-group
 
@@ -16,7 +29,7 @@ pacman -S git
 
 :::
 
-## SSH Key
+### SSH Key
 
 You will need an SSH key so that your computer and GitHub will have a "secret handshake" that identifies you automatically, without needing any further authentication.
 
@@ -48,13 +61,11 @@ ssh -T git@github.com
 
 If you see *"Hi [YourUsername]! You've successfully authenticated"*, everything is set and you are ready to go.
 
-## New Project Set-Up
+## Working on a Project
 
-When setting up a new project, always start by creating a new GitHub repository named **`fast-projectname`**.
+### Repository Initialization
 
-It must contain the code, script environment, CI/CD and setup READMI.
-
-## Repository Initialization
+If you need to work on an existing repository, just clone it locally:
 
 - `git clone <URL>`: Download an existing GitHub repository to your computer
 
@@ -64,38 +75,214 @@ You can get the required URL pushing the green "Code" button and copying the SSH
 - `git init`: Git initialization in current folder
 - `git remote add origin <URL>`: Connect the local repository to the GitHub one
 
+Else, when setting up a new project, always start by creating a new GitHub repository named **`fast-`** followed by the name of your project.
+
+
+### Conventions
+
+The current company workflow is structured in the following way:
+- `main` (production): the root and stable branch containing the production, functional code for final users;
+- `dev` (test/pre-production): the branch (or environment) into which the code is integrated to simulate the production environment and perform integration testing and QA.
+- `feature/` (development): temporary branches created by each developer/contributor in order to implement new functionalities, resolve bugs and so on, without touching the main code.
+
+Core Rules:
+- **Mandatory Task ID**: Every single piece of development starts from a task (e.g., `TASK-123`). The ID must be taken from the respective GoodDay task and always be included in branches, commits, and PRs.
+
+![TaskID](/taskid.png)
+
+- **No Direct Push to `main` or `dev`**: Updating the primary branches is done exclusively via Pull Requests.
+- **Mandatory Rebase**: Do not run `git merge main` inside your feature branch. Always align your branch using `rebase`.
+
+Branch Naming Conventions:
+- **Feature**: `feature/TASK-123-description`
+- **Bugfix**: `bugfix/TASK-211-login-error`
+- **Hotfix**: `hotfix/TASK-300-fix-payment`
+- **Refactoring**: `refactor/TASK-500-clean-services`
+- **Spike/Test**: `spike/TASK-700-oauth-test`
+
+Commit Naming Conventions:
+- **Format**: `TASK-123 short description`
+
 
 ## Core Workflow
 
-Think of Git as a three-stage process for saving your work. You move files from your folder to a "staging area" before finally sealing them into the permanent history (the repository).
+In FAST-Computing, we decided to take the following approach:
 
-- `git add <file>`: Move changes to the Staging Area. Use `git add .` to stage everything instead.
-- `git commit -m "Your message"`: Record the staged changes permanently. Remember, keep messages descriptive (e.g., "Fix login button styling").
+#### 1. Creating the Development Branch
 
-However, you would normally like to work on your, personal branch, unless stated otherwise. Branches allow you to work on new features without breaking the "Main" (stable) version of the project.
+Before starting any task, switch to the `dev` branch and pull the latest changes from remote:
 
-- `git checkout -b <branch_name>`: Create and switch to a new branch.
+```sh
+# Switch to dev and update it
+git checkout dev
+git pull origin dev
 
-![Branch check](/branchcheck.png)
-In VSCode, you can monitor the branch you're working in by looking at the bottom left of the screen.
+# Create your working branch from dev
+git checkout -b feature/TASK-123-export-pdf
+```
 
-- `git status`: A very helpful command you can always run to check files status and the current branch.
+#### 2. Frequent Development & Commits
 
-## Pushing to GitHub
+Work on your code and commit frequently following the naming convention:
 
-To share your code, you need to link your local folder to the remote repository on GitHub.
+```sh
+# Check modified files
+git status
 
-- `git push -u origin main`: Send your local commits to GitHub. The `-u` flag remembers your preferences for next time.
-- `git pull`: Grab the latest changes from GitHub and merge them into your local files. Use this often to stay up to date with workmates. 
+# Stage your changes
+git add .
 
-::: warning
-Instead of doing `git pull` directly, it is wisely recommended, instead, to `git fetch <branch_name>` first - to download new commits without touching working files - and then `git rebase <branch_name>` to move your local, unpushed commits to sit "on top" of the fetched commits from the server.
-:::
+# Create the commit
+git commit -m "TASK-123 add base layout for PDF export"
 
-## Pull Requests
+# Push your changes to the remote repository (first push)
+git push -u origin feature/TASK-123-export-pdf
+```
 
-A **Pull Request** (PR) isn't a Git command; it’s a GitHub feature. It’s a formal request to merge your branch into the main project and you can do it by going to the GitHub repository page. It allows for:
+#### 3. Rebase onto main before opening/merging the PR
 
-- Code Review: Others can comment on specific lines.
-- Testing: Automated tools can check if your code breaks anything.
-- Discussion: A place to talk about why the changes were made.
+Before opening (or merging) your Pull Request, align your branch with main to ensure a clean, linear history:
+
+```sh
+# Fetch latest data from origin without merging
+git fetch origin
+
+# Rebase your work onto origin/main
+git rebase origin/main
+
+# If there are conflicts: resolve them in your files, stage them, and continue:
+# git add <resolved-files>
+# git rebase --continue
+
+# Force-push changes safely to the remote branch
+git push --force-with-lease
+```
+
+#### 4. Opening and Merging the PR into dev
+
+- Open a Pull Request on GitHub setting base: `dev` and compare: `feature/TASK-123-export-pdf` (PR Title: `TASK-123 - Export PDF`).
+- Verify PR pre-merge requirements:
+    - Green CI (build, test, lint pass)
+    - No merge conflicts
+    - At least 1 team approval
+    - All conversations resolved
+    - No critical warnings
+- Select `Squash and Merge` (resulting commit: `TASK-123 Export PDF`).
+- Delete the remote branch (automated via GitHub or manually).
+
+```sh
+# Local cleanup after merging the PR
+git checkout dev
+git pull origin dev
+git branch -d feature/TASK-123-export-pdf
+git fetch --prune
+```
+
+
+### Production Hotfix
+
+If a critical bug occurs in production that requires an immediate patch:
+
+Create the Hotfix Branch from `main`:
+
+```sh
+git checkout main
+git pull origin main
+git checkout -b hotfix/TASK-300-fix-payment
+```
+
+Quick Fix & Commit:
+
+```sh
+git add .
+git commit -m "TASK-300 fix payment gateway timeout"
+git push -u origin hotfix/TASK-300-fix-payment
+```
+
+PR & Immediate Merge into `main`:
+- Open a PR with base: `main`.
+- Request a quick review and wait for CI checks to pass.
+- Perform a `Squash and Merge`.
+- Deploy the fix to production immediately.
+
+To prevent code drift, align `dev` with `main` right after merging the hotfix:
+
+```sh
+# Switch to dev and update it
+git checkout dev
+git pull origin dev
+
+# Rebase dev onto origin/main
+git fetch origin
+git rebase origin/main
+
+# Push updated dev branch safely
+git push --force-with-lease
+```
+
+Extra Commands Cheat Sheet:
+- `git status`: Check the state of modified/staged files.
+- `git log --oneline --graph`: View a concise, graphical representation of commit history.
+- `git fetch --prune`: Remove stale local tracking branches that were deleted on remote.
+
+
+## Structures
+
+### Repository Branches
+
+![Repository](/repository.png)
+
+### Development Flow
+
+![Flow](/merge.png)
+
+
+## Versioning
+
+The best and most standardized way to manage versioning is adopting semantic versioning combined with git tags.
+
+The version number follows the vX.Y.Z structure:
+- `MAJOR` (X): Major changes or breaking changes (incompatibility with the previous version, e.g., API rewrites, non-backward-compatible database changes).
+- `MINOR` (Y): New features released in a backward-compatible manner.
+- `PATCH` (Z): Bug fixes (bugfix/hotfix) or small backward-compatible optimizations.
+
+![Versioning](/versioning.png)
+
+### Ordinary Releases (dev ➔ main)
+
+Every time you complete a set of tasks on `dev` and open a PR toward `main`:
+- Version evaluation:
+    - If the release contains only new features/refactorings, increment `MINOR` (e.g., v1.2.0 -> v1.3.0).
+    - If it contains breaking changes, increment `MAJOR` (e.g., v1.2.0 -> v2.0.0).
+
+After merging the Release PR into `main`, an annotated tag is created directly on the release commit:
+
+```sh
+git checkout main
+git pull origin main
+
+# Create the annotated tag with a message
+git tag -a v1.3.0 -m "Release v1.3.0: Include TASK-123, TASK-124, TASK-125"
+
+# Push the tag on GitHub
+git push origin v1.3.0
+```
+
+### Emergency Hotfix (hotfix/* ➔ main)
+
+When you apply a patch on `main`: always increase `PATCH` (es. v1.3.0 -> v1.3.1).
+
+```sh
+git checkout main
+git pull origin main
+
+git tag -a v1.3.1 -m "Hotfix v1.3.1: critical fix payment TASK-300"
+git push origin v1.3.1
+```
+
+## Actions
+
+GitHub Actions are very useful workflows to be included or recalled from your repositories, with the purpose of automating checks, deployments, guardrails, tests.
+
+FAST-Computing's workflows are currently stored in https://github.com/FAST-Computing/.github, from which they can be directly recalled in your applications.
+

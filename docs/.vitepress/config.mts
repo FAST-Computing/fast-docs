@@ -145,6 +145,7 @@ export default defineConfig({
                 text: 'Styling',
                 collapsed: true,
                 items: [
+                  { text: 'FAST-Graphics', link: '/stacks/frontend/styling/fastgraphics' },
                   { text: 'MaterialUI', link: '/stacks/frontend/styling/materialui' },
                   { text: 'TailwindCSS', link: '/stacks/frontend/styling/tailwindcss' },
                 ]
