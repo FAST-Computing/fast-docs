@@ -284,5 +284,28 @@ git push origin v1.3.1
 
 GitHub Actions are very useful workflows to be included or recalled from your repositories, with the purpose of automating checks, deployments, guardrails, tests.
 
-FAST-Computing's workflows are currently stored in https://github.com/FAST-Computing/.github, from which they can be directly recalled in your applications.
+FAST-Computing's workflows are currently stored in https://github.com/FAST-Computing/.github, from which they can be directly recalled in your applications:
+- Create your own `.github/workflows` directory in the root folder of your project.
+- Inside, create a `.yml` file referencing to the original template.
 
+Example:
+
+::: code-group
+
+```sh [pr_code-guardrail.yml]
+name: PR Code Guardrail Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  # Note: this can have any name that you prefer
+  call-code-guardrail:  
+    # Original template
+    uses: FAST-Computing/.github/.github/workflows/pr_code-guardrail-template.yml@main 
+    with:
+      # Args
+      max-lines: 6000   
+```
+:::
