@@ -1,0 +1,8 @@
+name: Trivy Checker
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    uses: FAST-Computing/.github/.github/workflows/trivy-checker.yml@main
