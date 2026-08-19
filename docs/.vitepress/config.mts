@@ -110,6 +110,13 @@ export default defineConfig({
             text: 'Databases',
             collapsed: true,
             items: [
+              {
+                text: 'Authentication',
+                collapsed: true,
+                items: [
+                    { text: 'Keycloak', link: '/stacks/databases/authentication/keycloak' },
+                  ]
+              },
                 { text: 'Fundamentals', link: '/stacks/databases/fundamentals' },
                 { text: 'PostgreSQL', link: '/stacks/databases/postgres' },
                 { text: 'PostgREST', link: '/stacks/databases/postgrest' },
