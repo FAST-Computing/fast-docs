@@ -186,7 +186,7 @@ export default defineConfig({
         items: [
           {
             text: 'marinAI',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Overview', link: '/apps/marinai/overview' },
               { text: 'Backend', link: '/apps/marinai/backend' },
