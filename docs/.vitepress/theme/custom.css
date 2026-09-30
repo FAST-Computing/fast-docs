@@ -80,3 +80,195 @@
   height: 0.95em;
   flex: 0 0 auto;
 }
+
+/* ============================================================
+   Home Hero — dramatic centered layout with a watermark logo
+   Scoped to .VPHomeHero / .VPHome so no other page is affected.
+   The long selector chains outrank VitePress' scoped hero styles.
+   ============================================================ */
+
+/* Home page fills the viewport exactly — no vertical scroll */
+.VPHome {
+  margin-bottom: 0 !important;
+}
+
+/* Tall, vertically centered hero */
+.VPHome .VPHomeHero.VPHero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: calc(var(--vp-nav-height) + 48px);
+  padding-bottom: 64px;
+}
+
+.VPHome .VPHomeHero.VPHero.has-image .container {
+  position: static;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+/* Watermark logo — absolutely fills the hero, faint, behind the content */
+.VPHome .VPHomeHero.VPHero.has-image .image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  order: 0;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  min-height: 0;
+  opacity: 0.16;
+  pointer-events: none;
+  transform: none;
+}
+
+.dark .VPHome .VPHomeHero.VPHero.has-image .image {
+  opacity: 0.22;
+}
+
+.VPHome .VPHomeHero.VPHero.has-image .image-container {
+  width: min(82vw, 800px);
+  height: min(82vw, 800px);
+  transform: none;
+}
+
+.VPHome .VPHomeHero.VPHero.has-image .image-bg {
+  display: none;
+}
+
+.VPHome .VPHomeHero.VPHero.has-image .image-src {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Content sits above the watermark */
+.VPHome .VPHomeHero.VPHero.has-image .main {
+  position: relative;
+  z-index: 1;
+  order: 1;
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+}
+
+/* Hero brand logo (image) replaces the old text title */
+.VPHome .VPHomeHero.VPHero.has-image .name {
+  max-width: none;
+  margin: 0 auto;
+  line-height: 0;
+  text-align: center;
+}
+
+.VPHome .VPHomeHero.VPHero.has-image .name .hero-logo-text {
+  display: block;
+  width: clamp(300px, 66vw, 720px);
+  height: auto;
+  margin: 0 auto;
+}
+
+/* The brand SVG has black text; flip it to white (keeping brand orange)
+   when the dark theme is active so it stays readable. */
+.dark .VPHome .VPHomeHero.VPHero.has-image .name .hero-logo-text {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Subtitle: "Documentation & Standards" — smaller than the logo */
+.VPHome .VPHomeHero.VPHero.has-image .text {
+  max-width: none;
+  margin: 10px auto 0;
+  font-size: clamp(1.25rem, 3.4vw, 2.2rem);
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Tagline */
+.VPHome .VPHomeHero.VPHero.has-image .tagline {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-top: 28px;
+  font-size: clamp(1.1rem, 2.7vw, 1.7rem);
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* Big, centered call-to-action buttons */
+.VPHome .VPHomeHero.VPHero.has-image .actions {
+  justify-content: center;
+  padding-top: 44px;
+  gap: 6px;
+}
+
+/* Icons used inside the hero's call-to-action buttons */
+:root {
+  --hero-icon-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m13 6 6 6-6 6'/%3E%3C/svg%3E");
+  --hero-icon-github: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='black'%3E%3Cpath d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z'/%3E%3C/svg%3E");
+}
+
+.VPHome .VPHomeHero.VPHero.has-image .VPButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55em;
+  border-radius: 999px;
+  padding: 0 48px;
+  line-height: 68px;
+  font-size: 1.28rem;
+  font-weight: 600;
+}
+
+.VPHome .VPHomeHero.VPHero.has-image .VPButton::before {
+  content: "";
+  display: block;
+  flex: 0 0 auto;
+  width: 1.25em;
+  height: 1.25em;
+  background-color: currentColor;
+  -webkit-mask-image: var(--hero-icon);
+  mask-image: var(--hero-icon);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.VPHome .VPHomeHero.VPHero.has-image .VPButton.brand {
+  --hero-icon: var(--hero-icon-arrow);
+}
+
+.VPHome .VPHomeHero.VPHero.has-image .VPButton.alt {
+  --hero-icon: var(--hero-icon-github);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .VPHome .VPHomeHero.VPHero {
+    padding-top: calc(var(--vp-nav-height) + 32px);
+  }
+
+  .VPHome .VPHomeHero.VPHero.has-image .image-container {
+    width: 88vw;
+    height: 88vw;
+  }
+
+  .VPHome .VPHomeHero.VPHero.has-image .actions {
+    padding-top: 32px;
+  }
+
+  .VPHome .VPHomeHero.VPHero.has-image .VPButton {
+    padding: 0 30px;
+    line-height: 56px;
+    font-size: 1.05rem;
+  }
+}
