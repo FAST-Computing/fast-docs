@@ -250,6 +250,12 @@ In the Keycloak Admin Console:
 
 #### Add the Audience mapper
 
+A protocol mapper is a small rule attached to a client scope or to a client that tells Keycloak what to write into the
+tokens it issues. Each mapper has a type that decides which claim it produces: a user attribute, a group membership, a
+role list, and so on. The **Audience** mapper type adds a client ID to the `aud` claim of the access token, which is
+exactly the claim the FastAPI verifier checks. Without it, the token is still valid and correctly signed but carries no
+audience for the backend, and the API rejects it.
+
 Open the new scope, select **Mappers > Configure a new mapper**, and choose **Audience**. Configure:
 
 - **Included Client Audience**: the exact value of the FastAPI backend `CLIENT_ID`;
@@ -277,6 +283,39 @@ This default does not update clients that already exist. For each existing clien
 3. Select **Add client scope**.
 4. Choose `api-audience`.
 5. Set **Assigned type** to **Default** and save.
+
+#### Alternative: a mapper on the client dedicated scope
+
+When a single client must carry the audience and the mapper is not meant to be reused, add the mapper to the dedicated
+scope of that client instead of creating a realm client scope.
+
+In the Admin Console, open **Clients > `<client-id>` > Client scopes > `<client-id>`-dedicated > Mappers > Configure a
+new mapper > Audience**, set **Included Client Audience** to the protected API client ID, enable **Add to access
+token**, and save.
+
+The same result with `kcadm.sh`, following the conventions of the setup sections above:
+
+```bash
+CLIENT_UUID=$(kcadm.sh get clients -r test-app -q clientId=test-app-client \
+  --fields id --format csv --noquotes)
+
+kcadm.sh create clients/$CLIENT_UUID/protocol-mappers/models -r test-app -f - <<'EOF'
+{
+  "name": "audience-test-app-api",
+  "protocol": "openid-connect",
+  "protocolMapper": "oidc-audience-mapper",
+  "config": {
+    "included.client.audience": "test-app-api",
+    "id.token.claim": "false",
+    "access.token.claim": "true"
+  }
+}
+EOF
+```
+
+Replace `test-app` with the realm, `test-app-client` with the client that requests the token, and `test-app-api` with
+the backend `CLIENT_ID`. When the same client both requests the token and is the protected API, the two client IDs are
+identical.
 
 Verify the result by obtaining an access token for the client and checking that its `aud` claim contains the FastAPI
 `CLIENT_ID`. A token can be correctly signed and still be rejected with `401` if its audience is missing or points to a
