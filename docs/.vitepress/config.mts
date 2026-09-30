@@ -36,7 +36,10 @@ export default defineConfig({
         { text: 'ATLAS', link: 'https://atlas.sissa.it/' },
         { text: 'ARGOS', link: 'https://argos.sissa.it/' },
       ] },
-      { text: 'Home', link: '/' },
+      { text: 'Apps', items: [
+        { text: 'To be added', link: '/' },
+        { text: 'To be added 2', link: '/' },
+      ] },
     ],
     search: {
       provider: 'local',
@@ -173,6 +176,24 @@ export default defineConfig({
             items: [
               { text: 'SISSA VPN', link: '/services/vpn/sissavpn' },
               { text: 'Wireguard', link: '/services/vpn/wireguard' },
+            ]
+          },
+        ]
+      },
+      {
+        text: 'Apps',
+        collapsed: false,
+        items: [
+          {
+            text: 'marinAI',
+            collapsed: false,
+            items: [
+              { text: 'Overview', link: '/apps/marinai/overview' },
+              { text: 'Backend', link: '/apps/marinai/backend' },
+              { text: 'API Reference', link: '/apps/marinai/api-reference' },
+              { text: 'Frontend', link: '/apps/marinai/frontend' },
+              { text: 'Deployment', link: '/apps/marinai/deployment' },
+              { text: 'Glossary', link: '/apps/marinai/glossary' },
             ]
           },
         ]

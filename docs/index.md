@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: "FAST-Docs"
+  name: '<img src="logotext_fast_oneline.svg" alt="FAST Computing" class="hero-logo-text" />'
   text: "Documentation & Standards"
   tagline: "High-performance technical documentation built for speed and clarity."
   image:
@@ -12,19 +12,8 @@ hero:
     - theme: brand
       text: Get Started
       link: /introduction
-
-features:
-  - title: ⚡️ Lightning Fast
-    details: Built with Vite and Vue 3, ensuring your documentation loads instantly for your users.
-  - title: 🔎 Smart Search
-    details: Integrated local search with high-speed indexing for finding answers in seconds.
-  - title: ⚙️ Industry Standards
-    details: Optimized for clarity, accessibility, and following modern documentation best practices.
+    - theme: alt
+      text: GitHub
+      link: https://github.com/FAST-Computing
+      target: _blank
 ---
-
-<style>
-:root {
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #fe7434 30%, #ffffff);
-}
-</style>
