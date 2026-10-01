@@ -37,8 +37,8 @@ export default defineConfig({
         { text: 'ARGOS', link: 'https://argos.sissa.it/' },
       ] },
       { text: 'Apps', items: [
-        { text: 'To be added', link: '/' },
-        { text: 'To be added 2', link: '/' },
+        { text: 'Soon', link: '/' },
+        { text: 'Soon2', link: '/' },
       ] },
     ],
     search: {
@@ -58,6 +58,7 @@ export default defineConfig({
             text: 'Operating Systems',
             collapsed: true,
             items: [
+              { text: 'MacOS', link: '/setup/os/macos' },
               { text: 'Arch Linux', link: '/setup/os/arch_linux' },
             ]
           },
