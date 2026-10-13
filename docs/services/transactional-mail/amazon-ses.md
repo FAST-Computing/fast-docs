@@ -17,19 +17,23 @@ Do not put AWS credentials in the code or in the repository.
 
 ### Local Development
 
-Set the environment variables:
+Log in with the AWS CLI:
 
 ```sh
-export AWS_ACCESS_KEY_ID="..."
-export AWS_SECRET_ACCESS_KEY="..."
+aws login
+```
+
+This opens a browser to authenticate and caches temporary credentials locally. Boto3 reads them automatically through the AWS CLI credential chain, so there is no need to export `AWS_ACCESS_KEY_ID` or `AWS_SECRET_ACCESS_KEY`.
+
+Set the region for the session:
+
+```sh
 export AWS_DEFAULT_REGION="eu-north-1"
 ```
 
 On Windows PowerShell:
 
 ```powershell
-$env:AWS_ACCESS_KEY_ID="..."
-$env:AWS_SECRET_ACCESS_KEY="..."
 $env:AWS_DEFAULT_REGION="eu-north-1"
 ```
 
