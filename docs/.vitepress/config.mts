@@ -179,6 +179,13 @@ export default defineConfig({
               { text: 'Wireguard', link: '/services/vpn/wireguard' },
             ]
           },
+          {
+            text: 'Transactional Mail',
+            collapsed: true,
+            items: [
+              { text: 'Amazon SES', link: '/services/transactional-mail/amazon-ses' },
+            ]
+          },
         ]
       },
       {
