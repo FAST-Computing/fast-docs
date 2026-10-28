@@ -59,6 +59,82 @@ Strict channel priority helps keep dependency resolution more predictable.
 :::
 
 
+## Computational Workstations & Shared Environments
+
+On shared computational workstations (e.g. `kmer`), micromamba is often pre-installed with a shared conda root. 
+
+### Verify installation
+
+```sh
+micromamba --version
+micromamba info
+```
+
+Make sure the root prefix is set correctly (example):
+
+```text
+/home/ndemo/.conda
+```
+
+### Create a personal environment
+
+```sh
+micromamba create -n test python=3.12 numpy scipy -y
+```
+
+Activate and verify it:
+
+```sh
+micromamba activate test
+which python
+python --version
+```
+
+The expected path should look like:
+
+```text
+/home/ndemo/.conda/envs/test/bin/python
+```
+
+Deactivate when done:
+
+```sh
+micromamba deactivate
+```
+
+### Create and use shared environments (managed by root)
+
+On shared servers, system administrators can create environments in a shared location (e.g. `/data/conda/shared_envs/`) that all users can activate. 
+
+::: warning
+Only root/administrators can create or update shared environments.
+:::
+
+As root:
+
+```sh
+micromamba create \
+  -p /data/conda/shared_envs/scientific \
+  -c conda-forge \
+  python=3.12 numpy scipy pandas matplotlib \
+  -y
+```
+
+As any user, you can activate it directly by path:
+
+```sh
+micromamba activate /data/conda/shared_envs/scientific
+```
+
+To add packages to a shared environment, only the administrator can do so:
+
+```sh
+micromamba install \
+  -p /data/conda/shared_envs/scientific \
+  scikit-learn -y
+```
+
+
 ## Core Workflow
 
 ::: warning
