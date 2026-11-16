@@ -176,7 +176,7 @@ export default defineConfig({
             collapsed: true,
             items: [
               { text: 'SISSA VPN', link: '/services/vpn/sissavpn' },
-              { text: 'Wireguard', link: '/services/vpn/wireguard' },
+              { text: 'Netbird', link: '/services/vpn/netbird' },
             ]
           },
           {
